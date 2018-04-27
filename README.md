@@ -1,6 +1,6 @@
 # SlidingPuzzle
 
-A Search Tree algorithm to solve 3x3 Sliding Puzzles. Entering a valid combination, it will calculate and give you the reverse step-by-step to solve it.
+A **Search Tree algorithm** to solve 3x3 Sliding Puzzles. Entering a valid combination, it will calculate and give you the reverse step-by-step to solve it.
 
 Example:
 ```
@@ -25,7 +25,7 @@ frontier size: 6
 
 ...
 
-iteratuins: 22
+iterations: 22
 frontier size: 39
 
 FINAL STATE
