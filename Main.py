@@ -13,7 +13,7 @@ def isFinal(combination):
     if (combination == [[1,2,3],
                         [4,5,6],
                         [7,8,0]]):
-        print("FINAL STATE")
+        print("\nFINAL STATE")
         return True
 
 
@@ -22,8 +22,8 @@ def search(game):  # widthFirstSearch
     global i
     i += 1
 
-    print("iterations = %d" % i)
-    print("frontier size = %d" % len(frontier))
+    print("iterations: %d" % i)
+    print("frontier size: %d" % len(frontier))
 
     # verifies if the matrix is the final state desired
     if isFinal(game.matrix):
@@ -86,6 +86,7 @@ print("Enter a valid initial combination")
 pieces[0] = input('1st line: ')
 pieces[1] = input('2nd line: ')
 pieces[2] = input('3rd line: ')
+print("\n")
 
 # Splits the string entered by comma and maps each element to int
 for line in range(3):
