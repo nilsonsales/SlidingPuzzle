@@ -3,7 +3,7 @@
 A Search Tree algorithm to solve 3x3 Sliding Puzzles. Entering a valid combination, it will calculate and give you the reverse step-by-step to solve it.
 
 Example:
-
+```
 Enter a valid initial combination
 1st line: 1,2,3
 2nd line: 4,6,0
@@ -42,4 +42,4 @@ FINAL STATE
 [1, 2, 3]
 [4, 0, 6]
 [7, 5, 8]
-
+```
