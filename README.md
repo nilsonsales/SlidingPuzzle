@@ -1,6 +1,6 @@
 # SlidingPuzzle
 
-A **Search Tree** algorithm to solve 3x3 Sliding Puzzles. Entering a valid combination, the algorithm will find and give you a reverse step-by-step to get to that combination.
+A **Search Tree** algorithm to solve 3x3 Sliding Puzzles. Entering a valid combination, the algorithm will find and give you a reverse step-by-step to get to that combination. The **0** represents the missing piece.
 
 Example:
 ```
