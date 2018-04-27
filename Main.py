@@ -87,7 +87,7 @@ pieces[0] = input('1st line: ')
 pieces[1] = input('2nd line: ')
 pieces[2] = input('3rd line: ')
 
-
+# Splits the string entered by comma and maps each element to int
 for line in range(3):
     pieces[line] = pieces[line].split(",")
     pieces[line] = list(map(int, pieces[line]))
