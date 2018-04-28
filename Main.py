@@ -40,7 +40,7 @@ def search(game):  # widthFirstSearch
 
     # verifies if the matrix is the final state desired
     if isFinal(game.matrix):
-        while game.parent is not None:  # prints the reverse game
+        while game.parent is not None:  # prints the game step-by-step
             stepBstep.append(game)
             game = game.parent
 
