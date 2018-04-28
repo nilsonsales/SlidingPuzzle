@@ -5,16 +5,29 @@ Search Tree with 3x3 Sliding Puzzle
 
 from Node import Node
 
+import sys
+sys.setrecursionlimit(10000)
+
 frontier = []
 i = 0
 stepBstep = []
 puzzle = None
+hasChildren = []
+
+
+
+default = [[1,2,3],
+           [4,5,6],
+           [7,8,0]]
+
+default2 = [[1,8,2],
+            [0,4,3],
+            [7,6,5]]
+            
 
 
 def isFinal(combination):
-    if (combination == [[1,2,3],
-                        [4,5,6],
-                        [7,8,0]]):
+    if (combination == default):
         print("\nSOLUTION:")
         return True
 
@@ -49,6 +62,9 @@ def search(game):  # widthFirstSearch
     else:
         if frontier:  # if the frontier is not null, removes the 1st element and generates children
             frontier.pop(0)
+
+            if game in hasChildren:  # if combination is already in failed combinations
+            	search(frontier[0])
 
         # finds where the zero (blank piece) is and adds children to the frontier
         if game.zero == [1, 1]:
@@ -85,6 +101,9 @@ def search(game):  # widthFirstSearch
             frontier.append(game.move_left())
             frontier.append(game.move_up())
 
+        if game not in hasChildren:
+        	hasChildren.append(game)
+
         search(frontier[0])  # calls the function again with the new frontier
 
 
@@ -106,6 +125,8 @@ print("\n")
 for line in range(3):
     pieces[line] = pieces[line].split(" ")
     pieces[line] = list(map(int, pieces[line]))
+
+
 
 puzzle = Node(pieces, None)  # (matrix, parent)
 
