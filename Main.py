@@ -12,7 +12,7 @@ frontier = []
 i = 0
 stepBstep = []
 puzzle = None
-notValid = []
+hasChildren = []
 
 
 default = [[1,2,3],
@@ -22,6 +22,10 @@ default = [[1,2,3],
 default2 = [[1,8,2],
             [0,4,3],
             [7,6,5]]
+
+default3 = [[3,5,2],
+            [0,7,6],
+            [4,1,2]]
 
 
 def isFinal(combination):
@@ -39,7 +43,7 @@ def search(game):  # widthFirstSearch
 
     print("iterations: %d" % i)
     print("frontier size: %d" % len(frontier))
-    print("notValid: %d" % len(notValid))
+    print("hasChildren: %d" % len(hasChildren))
 
     # verifies if the matrix is the final state desired
     if isFinal(game.matrix):
@@ -57,10 +61,11 @@ def search(game):  # widthFirstSearch
 
 
     else:
-        if frontier:  # if the frontier is not null, removes the 1st element and generates children
+        if frontier:  # if the frontier is not null, removes the 1st element
             frontier.pop(0)
 
-        if game.matrix in notValid:  # if combination has already generated children
+        # sees if the combination has already generated children
+        if game.matrix in hasChildren:
             search(frontier[0])
 
         else:
@@ -99,8 +104,8 @@ def search(game):  # widthFirstSearch
                 frontier.append(game.move_left())
                 frontier.append(game.move_up())
 
-            if game not in notValid:
-                notValid.append(game.matrix)
+            if game not in hasChildren:
+                hasChildren.append(game.matrix)
 
             search(frontier[0])  # calls the function again with the new frontier
 
