@@ -14,6 +14,7 @@ stepBstep = []
 puzzle = None
 notValid = []
 
+
 default = [[1,2,3],
            [4,5,6],
            [7,8,0]]
@@ -21,6 +22,7 @@ default = [[1,2,3],
 default2 = [[1,8,2],
             [0,4,3],
             [7,6,5]]
+
 
 def isFinal(combination):
     if (combination == default):
@@ -37,6 +39,7 @@ def search(game):  # widthFirstSearch
 
     print("iterations: %d" % i)
     print("frontier size: %d" % len(frontier))
+    print("notValid: %d" % len(notValid))
 
     # verifies if the matrix is the final state desired
     if isFinal(game.matrix):
@@ -49,7 +52,7 @@ def search(game):  # widthFirstSearch
         stepBstep.reverse()
 
         for element in range(len(stepBstep)):
-        	stepBstep[element].print()
+            stepBstep[element].print()
         return game
 
 
@@ -57,48 +60,49 @@ def search(game):  # widthFirstSearch
         if frontier:  # if the frontier is not null, removes the 1st element and generates children
             frontier.pop(0)
 
-            if game in notValid:  # if combination has already generated children
-            	search(frontier[0])
+        if game.matrix in notValid:  # if combination has already generated children
+            search(frontier[0])
 
-        # finds where the zero (blank piece) is and adds its children to the frontier
-        if game.zero == [1, 1]:
-            frontier.append(game.move_left())
-            frontier.append(game.move_right())
-            frontier.append(game.move_up())
-            frontier.append(game.move_down())
-        elif game.zero == [0, 0]:
-            frontier.append(game.move_right())
-            frontier.append(game.move_down())
-        elif game.zero == [0, 2]:
-            frontier.append(game.move_left())
-            frontier.append(game.move_down())
-        elif game.zero == [2, 0]:
-            frontier.append(game.move_right())
-            frontier.append(game.move_up())
-        elif game.zero == [2, 2]:
-            frontier.append(game.move_left())
-            frontier.append(game.move_up())
-        elif game.zero == [0, 1]:
-            frontier.append(game.move_right())
-            frontier.append(game.move_left())
-            frontier.append(game.move_down())
-        elif game.zero == [1, 0]:
-            frontier.append(game.move_right())
-            frontier.append(game.move_up())
-            frontier.append(game.move_down())
-        elif game.zero == [1, 2]:
-            frontier.append(game.move_left())
-            frontier.append(game.move_up())
-            frontier.append(game.move_down())
-        elif game.zero == [2, 1]:
-            frontier.append(game.move_right())
-            frontier.append(game.move_left())
-            frontier.append(game.move_up())
+        else:
+            # finds where the zero (blank piece) is and adds its children to the frontier
+            if game.zero == [1, 1]:
+                frontier.append(game.move_left())
+                frontier.append(game.move_right())
+                frontier.append(game.move_up())
+                frontier.append(game.move_down())
+            elif game.zero == [0, 0]:
+                frontier.append(game.move_right())
+                frontier.append(game.move_down())
+            elif game.zero == [0, 2]:
+                frontier.append(game.move_left())
+                frontier.append(game.move_down())
+            elif game.zero == [2, 0]:
+                frontier.append(game.move_right())
+                frontier.append(game.move_up())
+            elif game.zero == [2, 2]:
+                frontier.append(game.move_left())
+                frontier.append(game.move_up())
+            elif game.zero == [0, 1]:
+                frontier.append(game.move_right())
+                frontier.append(game.move_left())
+                frontier.append(game.move_down())
+            elif game.zero == [1, 0]:
+                frontier.append(game.move_right())
+                frontier.append(game.move_up())
+                frontier.append(game.move_down())
+            elif game.zero == [1, 2]:
+                frontier.append(game.move_left())
+                frontier.append(game.move_up())
+                frontier.append(game.move_down())
+            elif game.zero == [2, 1]:
+                frontier.append(game.move_right())
+                frontier.append(game.move_left())
+                frontier.append(game.move_up())
 
-        if game not in notValid:
-        	notValid.append(game)
+            if game not in notValid:
+                notValid.append(game.matrix)
 
-        search(frontier[0])  # calls the function again with the new frontier
+            search(frontier[0])  # calls the function again with the new frontier
 
 
 # pieces = [[1,8,2],
