@@ -12,9 +12,7 @@ frontier = []
 i = 0
 stepBstep = []
 puzzle = None
-hasChildren = []
-
-
+notValid = []
 
 default = [[1,2,3],
            [4,5,6],
@@ -23,8 +21,6 @@ default = [[1,2,3],
 default2 = [[1,8,2],
             [0,4,3],
             [7,6,5]]
-            
-
 
 def isFinal(combination):
     if (combination == default):
@@ -39,9 +35,6 @@ def search(game):  # widthFirstSearch
     global puzzle
     i += 1
 
-    # if i == 1:  # saves the original combination
-    # 	firstStep = game
-
     print("iterations: %d" % i)
     print("frontier size: %d" % len(frontier))
 
@@ -50,8 +43,8 @@ def search(game):  # widthFirstSearch
         while game.parent is not None:  # prints the reverse game
             stepBstep.append(game)
             game = game.parent
-        #return game
 
+        #  adds the original combination and reverses the list
         stepBstep.append(puzzle)
         stepBstep.reverse()
 
@@ -59,14 +52,15 @@ def search(game):  # widthFirstSearch
         	stepBstep[element].print()
         return game
 
+
     else:
         if frontier:  # if the frontier is not null, removes the 1st element and generates children
             frontier.pop(0)
 
-            if game in hasChildren:  # if combination is already in failed combinations
+            if game in notValid:  # if combination has already generated children
             	search(frontier[0])
 
-        # finds where the zero (blank piece) is and adds children to the frontier
+        # finds where the zero (blank piece) is and adds its children to the frontier
         if game.zero == [1, 1]:
             frontier.append(game.move_left())
             frontier.append(game.move_right())
@@ -101,15 +95,15 @@ def search(game):  # widthFirstSearch
             frontier.append(game.move_left())
             frontier.append(game.move_up())
 
-        if game not in hasChildren:
-        	hasChildren.append(game)
+        if game not in notValid:
+        	notValid.append(game)
 
         search(frontier[0])  # calls the function again with the new frontier
 
 
-# pieces = [[2,4,3],
-#           [1,0,6],
-#           [7,5,8]]
+# pieces = [[1,8,2],
+#           [0,4,3],
+#           [7,6,5]]
 
 pieces = [[],
           [],
@@ -125,7 +119,6 @@ print("\n")
 for line in range(3):
     pieces[line] = pieces[line].split(" ")
     pieces[line] = list(map(int, pieces[line]))
-
 
 
 puzzle = Node(pieces, None)  # (matrix, parent)
