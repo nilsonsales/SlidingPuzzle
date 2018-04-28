@@ -1,12 +1,12 @@
 # SlidingPuzzle
 
-A **Search Tree** algorithm to solve 3x3 Sliding Puzzles. Entering a valid combination, the algorithm will find and give you a reverse step-by-step to get to that combination. The **0** represents the missing piece.
+A **Search Tree** algorithm to solve 3x3 Sliding Puzzles. Entering a valid combination, the algorithm will find and give you a step-by-step gide to solve that. The **0** represents the missing piece.
 
 Example:
 ```
-Enter a valid initial combination
+Enter a valid initial combination separated by space
 1st line: 1 2 3
-2nd line: 4 6 0
+2nd line: 4 6 0 
 3rd line: 7 5 8
 
 
@@ -25,13 +25,20 @@ frontier size: 6
 
 ...
 
+iterations: 21
+frontier size: 36
 iterations: 22
 frontier size: 39
 
-FINAL STATE
+SOLUTION:
 [1, 2, 3]
-[4, 5, 6]
-[7, 8, 0]
+[4, 6, 0]
+[7, 5, 8]
+
+
+[1, 2, 3]
+[4, 0, 6]
+[7, 5, 8]
 
 
 [1, 2, 3]
@@ -40,6 +47,6 @@ FINAL STATE
 
 
 [1, 2, 3]
-[4, 0, 6]
-[7, 5, 8]
+[4, 5, 6]
+[7, 8, 0]
 ```
