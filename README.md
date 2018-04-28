@@ -5,9 +5,9 @@ A **Search Tree** algorithm to solve 3x3 Sliding Puzzles. Entering a valid combi
 Example:
 ```
 Enter a valid initial combination
-1st line: 1,2,3
-2nd line: 4,6,0
-3rd line: 7,5,8
+1st line: 1 2 3
+2nd line: 4 6 0
+3rd line: 7 5 8
 
 
 INITIAL STATE
