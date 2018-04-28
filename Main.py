@@ -7,6 +7,8 @@ from Node import Node
 
 frontier = []
 i = 0
+stepBstep = []
+puzzle = None
 
 
 def isFinal(combination):
@@ -20,7 +22,12 @@ def isFinal(combination):
 def search(game):  # widthFirstSearch
     global frontier
     global i
+    global stepBstep
+    global puzzle
     i += 1
+
+    # if i == 1:  # saves the original combination
+    # 	firstStep = game
 
     print("iterations: %d" % i)
     print("frontier size: %d" % len(frontier))
@@ -28,8 +35,15 @@ def search(game):  # widthFirstSearch
     # verifies if the matrix is the final state desired
     if isFinal(game.matrix):
         while game.parent is not None:  # prints the reverse game
-            game.print()
+            stepBstep.append(game)
             game = game.parent
+        #return game
+
+        stepBstep.append(puzzle)
+        stepBstep.reverse()
+
+        for element in range(len(stepBstep)):
+        	stepBstep[element].print()
         return game
 
     else:
