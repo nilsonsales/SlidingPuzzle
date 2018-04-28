@@ -15,7 +15,7 @@ def isFinal(combination):
     if (combination == [[1,2,3],
                         [4,5,6],
                         [7,8,0]]):
-        print("\nFINAL STATE")
+        print("\nSOLUTION:")
         return True
 
 
