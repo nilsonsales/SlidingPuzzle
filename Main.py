@@ -43,7 +43,7 @@ def search(game):  # widthFirstSearch
 
     print("iterations: %d" % i)
     print("frontier size: %d" % len(frontier))
-    print("hasChildren: %d" % len(hasChildren))
+    #print("hasChildren: %d" % len(hasChildren))
 
     # verifies if the matrix is the final state desired
     if isFinal(game.matrix):

@@ -6,7 +6,7 @@ Example:
 ```
 Enter a valid initial combination separated by space
 1st line: 1 2 3
-2nd line: 4 6 0 
+2nd line: 4 6 0
 3rd line: 7 5 8
 
 
@@ -25,10 +25,8 @@ frontier size: 6
 
 ...
 
-iterations: 21
-frontier size: 36
-iterations: 22
-frontier size: 39
+iterations: 19
+frontier size: 17
 
 SOLUTION:
 [1, 2, 3]
